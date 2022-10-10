@@ -11,6 +11,6 @@ import java.util.List;
 public interface UserRepository extends JpaRepository<User, Long> {
     User findById(long id);
 
-    @Query(value = "SELECT * FROM Users", nativeQuery = true)
+    @Query(value = "SELECT * FROM users", nativeQuery = true)
     List<User> findAll();
 }

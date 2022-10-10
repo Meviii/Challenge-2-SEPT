@@ -16,22 +16,4 @@ public class AccountserviceApplication {
 		SpringApplication.run(AccountserviceApplication.class, args);
 	}
 
-//	@Bean
-//	public CommandLineRunner mappingDemo(UserRepository userRepository,
-//										 AccountRepository accountRepository) {
-//		return args -> {
-//
-//			// create a new book
-//			User userToTest = new User("testEmailTwo@", "testName", "10/10/2000", "Engineer", "0421234312");
-//
-//
-//			// save the book
-//			userRepository.save(userToTest);
-//
-//			// create and save new pages
-//			accountRepository.save(new Account(AccountType.LOAN, "1231231", "A loan account", "5123132", userToTest));
-//			accountRepository.save(new Account(AccountType.SAVING, "123122231", "A savings account", "222123", userToTest));
-//		};
-//	}
-
 }

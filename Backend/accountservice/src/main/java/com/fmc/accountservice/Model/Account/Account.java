@@ -7,13 +7,13 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.Calendar;
 
-@Table(name = "accounts")
 @Entity
 @Getter
 @Setter
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "accounts")
 public class Account {
 
     @Id
