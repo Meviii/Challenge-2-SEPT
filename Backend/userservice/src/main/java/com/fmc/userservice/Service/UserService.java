@@ -1,11 +1,13 @@
 package com.fmc.userservice.Service;
 
+import com.fmc.userservice.Exception.CustomException;
 import com.fmc.userservice.Model.User;
 import com.fmc.userservice.Model.UserList;
 import com.fmc.userservice.Repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 /**
@@ -83,7 +85,7 @@ public class UserService {
             userRepository.save(user);
 
         } catch (Exception e) {
-            isCreated = false;
+            throw new CustomException("Couldn't create user", HttpStatus.BAD_REQUEST, e);
         }
         return isCreated;
     }

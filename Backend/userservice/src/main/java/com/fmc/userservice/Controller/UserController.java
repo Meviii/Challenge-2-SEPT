@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 /**
  * WEB Endpoint controller/ URI Controller
@@ -40,7 +41,7 @@ public class UserController {
 
         if (toReturn.isEmpty()) {
             LOGGER.info("No users currently");
-            throw new CustomException("No users currently.", HttpStatus.NOT_FOUND);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No users currently.");
         }
         return toReturn;
     }
@@ -57,7 +58,7 @@ public class UserController {
 
         if (toReturn == null) {
             LOGGER.info("Couldn't find user with ID: " + id);
-            throw new CustomException("User doesn't not exist", HttpStatus.NOT_FOUND);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User doesn't exist.");
         }
 
         return toReturn;
@@ -75,7 +76,7 @@ public class UserController {
 
         if (!isUpdated) {
             LOGGER.warn("Couldn't update user with ID: " + id);
-            throw new CustomException("Couldn't update user", HttpStatus.BAD_REQUEST);
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Couldn't update user.");
         }
 
         return new ResponseEntity<>("User updated.", HttpStatus.OK);
@@ -90,7 +91,7 @@ public class UserController {
 
         if (!isCreated) {
             LOGGER.warn("Couldn't create user.");
-            throw new CustomException("Couldn't create user", HttpStatus.BAD_REQUEST);
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Couldn't create user. ");
         }
 
         return new ResponseEntity<>("User created.", HttpStatus.CREATED);
@@ -108,7 +109,7 @@ public class UserController {
 
         if (!isDeleted) {
             LOGGER.warn("Couldn't delete user with ID: " + id);
-            throw new CustomException("Couldn't delete user", HttpStatus.BAD_REQUEST);
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Couldn't delete user.");
         }
 
         return new ResponseEntity<>("User deleted.", HttpStatus.OK);
@@ -117,13 +118,13 @@ public class UserController {
     /**
      * Deletes all users
      */
-    @DeleteMapping(path = "/")
-    public ResponseEntity<String> deleteUser() {
+    @DeleteMapping()
+    public ResponseEntity<String> deleteUsers() {
         Boolean isDeleted = userService.deleteAll();
 
         if (!isDeleted) {
             LOGGER.warn("Couldn't delete users.");
-            throw new CustomException("Couldn't delete users", HttpStatus.BAD_REQUEST);
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Couldn't delete users.");
         }
 
         return new ResponseEntity<>("All Users deleted.", HttpStatus.OK);
