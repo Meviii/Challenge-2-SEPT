@@ -1,4 +1,4 @@
-package com.fmc.userservice.Model;
+package com.fmc.accountservice.Model.User;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -22,12 +22,12 @@ public class UserList {
         this.users = users;
     }
 
-    public List<User> getUsers() {
+    public List<User> getMessages() {
         return users;
     }
 
-    public void setUsers(List<User> users) {
-        this.users = users;
+    public void setMessages(List<User> messages) {
+        this.users = messages;
     }
 
     @JsonIgnore
