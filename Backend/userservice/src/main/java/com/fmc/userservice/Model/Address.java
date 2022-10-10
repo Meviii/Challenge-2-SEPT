@@ -10,12 +10,12 @@ import javax.persistence.*;
  * Each User object can hold an object of this class.
  */
 @Entity
-@Table(name="addresses")
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
+@Table(name="addresses")
 public class Address {
 
     @Id
