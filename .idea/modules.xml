@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Challenge-2-SEPT.iml" filepath="$PROJECT_DIR$/.idea/Challenge-2-SEPT.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Backend/accountservice/accountservice.iml" filepath="$PROJECT_DIR$/Backend/accountservice/accountservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Backend/userservice/userservice.iml" filepath="$PROJECT_DIR$/Backend/userservice/userservice.iml" />
+    </modules>
+  </component>
+</project>
