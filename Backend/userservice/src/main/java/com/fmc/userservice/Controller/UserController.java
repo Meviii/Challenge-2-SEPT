@@ -1,7 +1,5 @@
 package com.fmc.userservice.Controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fmc.userservice.Exception.CustomException;
 import com.fmc.userservice.Model.User;
 import com.fmc.userservice.Model.UserList;
 import com.fmc.userservice.Service.UserService;
