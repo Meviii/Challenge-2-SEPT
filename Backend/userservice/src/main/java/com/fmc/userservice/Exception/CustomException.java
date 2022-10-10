@@ -1,5 +1,9 @@
 package com.fmc.userservice.Exception;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.http.HttpStatus;
 
 /**
@@ -10,40 +14,17 @@ import org.springframework.http.HttpStatus;
  *      - ErrorCode: The exception message
  *      - ErrorStatus: The HTTP response status
  */
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class CustomException extends RuntimeException {
     private static final long serialVersionUID = 1L;
 
     private String errorMessage;
     private String errorCode;
     private HttpStatus errorStatus;
-
-    public HttpStatus getErrorStatus() {
-        return errorStatus;
-    }
-
-    public void setErrorStatus(HttpStatus errorStatus) {
-        this.errorStatus = errorStatus;
-    }
-
-    public String getErrorMessage() {
-        return errorMessage;
-    }
-
-    public void setErrorMessage(String errorMessage) {
-        this.errorMessage = errorMessage;
-    }
-
-    public String getErrorCode() {
-        return errorCode;
-    }
-
-    public void setErrorCode(String errorCode) {
-        this.errorCode = errorCode;
-    }
-
-    public CustomException() {
-
-    }
+    private Exception errorException;
 
     public CustomException(String errorMessage, HttpStatus errorStatus) {
         this.errorMessage = errorMessage;
@@ -56,4 +37,9 @@ public class CustomException extends RuntimeException {
         this.errorStatus = errorStatus;
     }
 
+    public CustomException(String errorMessage, HttpStatus errorStatus, Exception errorException) {
+        this.errorMessage = errorMessage;
+        this.errorStatus = errorStatus;
+        this.errorException = errorException;
+    }
 }

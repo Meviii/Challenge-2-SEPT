@@ -1,5 +1,6 @@
 package com.fmc.userservice.Controller;
 
+import com.fmc.userservice.Model.Address;
 import com.fmc.userservice.Model.User;
 import com.fmc.userservice.Model.UserList;
 import com.fmc.userservice.Repository.UserRepository;
@@ -31,7 +32,9 @@ class UserControllerTest {
         userController = Mockito.mock(UserController.class);
 
         User testUser = new User("testEmail@", "testName", "10/10/2000", "Engineer", "042123412");
-        User testUserTwo = new User("testEmailTwo@", "testName", "10/10/2000", "Engineer", "0421234312");
+        Address address = new Address("1", "a street name", "a city", "a state", "2144", "Australia");
+        User testUserTwo = new User("testEmailTwo@", "testName", "10/10/2000", "Engineer", "0421234312", address);
+
         userRepository.save(testUser);
         userRepository.save(testUserTwo);
     }
@@ -41,7 +44,7 @@ class UserControllerTest {
     }
 
     @Test
-    void getAllUsers() {
+    void shouldGetAllUsers() {
         List<User> users = userRepository.findAll();
         UserList userList = new UserList(users);
         when(userController.getAllUsers()).thenReturn(userList);
@@ -49,7 +52,7 @@ class UserControllerTest {
     }
 
     @Test
-    void getUserById() {
+    void shouldGetUserById() {
         User a = userRepository.findById(1);
         when(userController.getUserById(1)).thenReturn(a);
 
@@ -57,7 +60,7 @@ class UserControllerTest {
     }
 
     @Test
-    void deleteUser() {
+    void shouldDeleteUsers() {
         ResponseEntity<String> response = new ResponseEntity<>("User deleted.", HttpStatus.OK);
 
         when(userController.deleteUser(1)).thenReturn(response);

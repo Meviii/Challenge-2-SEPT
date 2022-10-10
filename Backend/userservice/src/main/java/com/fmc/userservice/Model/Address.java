@@ -22,7 +22,7 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private Integer streetNo;
+    private String streetNo;
 
     private String streetName;
 
@@ -30,8 +30,16 @@ public class Address {
 
     private String state;
 
-    private Integer postCode;
+    private String postCode;
 
     private String country;
 
+    public Address(String streetNo, String streetName, String city, String state, String postCode, String country) {
+        this.streetNo = streetNo;
+        this.streetName = streetName;
+        this.city = city;
+        this.state = state;
+        this.postCode = postCode;
+        this.country = country;
+    }
 }
