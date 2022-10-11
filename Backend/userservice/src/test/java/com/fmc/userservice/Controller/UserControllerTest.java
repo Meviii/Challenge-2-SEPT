@@ -60,7 +60,7 @@ class UserControllerTest {
     }
 
     @Test
-    void shouldDeleteUsers() {
+    void shouldDeleteUserById() {
         ResponseEntity<String> response = new ResponseEntity<>("User deleted.", HttpStatus.OK);
 
         when(userController.deleteUser(1)).thenReturn(response);
