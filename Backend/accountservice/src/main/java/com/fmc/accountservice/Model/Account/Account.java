@@ -12,7 +12,6 @@ import java.util.Calendar;
 @Setter
 @ToString
 @AllArgsConstructor
-@NoArgsConstructor
 @Table(name = "accounts")
 public class Account {
 
@@ -31,6 +30,10 @@ public class Account {
     @JoinColumn(name = "user_id")
     @JsonBackReference
     private User user;
+
+    public Account() {
+        this.curr_date = Calendar.getInstance().getTime().toString();
+    }
 
     public Account(AccountType acc_type, String acc_number, String acc_name, String balance, String curr_date, User user) {
         this.acc_type = acc_type;
