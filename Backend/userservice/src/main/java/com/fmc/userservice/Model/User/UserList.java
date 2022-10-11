@@ -1,4 +1,4 @@
-package com.fmc.userservice.Model;
+package com.fmc.userservice.Model.User;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

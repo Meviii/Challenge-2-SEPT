@@ -1,8 +1,9 @@
 package com.fmc.userservice.Service;
 
 import com.fmc.userservice.Exception.CustomException;
-import com.fmc.userservice.Model.User;
-import com.fmc.userservice.Model.UserList;
+import com.fmc.userservice.Model.User.User;
+import com.fmc.userservice.Model.User.UserList;
+import com.fmc.userservice.Repository.AccountRepository;
 import com.fmc.userservice.Repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,16 +18,19 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final AccountRepository accountRepository;
     private static final Logger LOGGER = LoggerFactory.getLogger(UserService.class);
 
     /**
      * Main constructor for the User service.
      *
-     * @param userRepository  - Initializes global user repository
+     * @param userRepository    - Initializes global user repository
+     * @param accountRepository
      */
     @Autowired
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, AccountRepository accountRepository) {
         this.userRepository = userRepository;
+        this.accountRepository = accountRepository;
         LOGGER.info("User service started.");
     }
 
@@ -116,6 +120,7 @@ public class UserService {
         LOGGER.info("Deleting all users.");
         boolean isDeleted = true;
         try {
+            accountRepository.deleteAll();
             userRepository.deleteAll();
         } catch (Exception e) {
             isDeleted = false;
