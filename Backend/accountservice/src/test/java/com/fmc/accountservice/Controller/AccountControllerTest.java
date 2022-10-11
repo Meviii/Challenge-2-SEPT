@@ -55,7 +55,7 @@ class AccountControllerTest {
     }
 
     @Test
-    void getAccountById() {
+    void shouldGetAccountById() {
         Account accToFind = accountRepository.findById(1);
         when(accountController.getAccountById(1)).thenReturn(accToFind);
 
@@ -63,7 +63,7 @@ class AccountControllerTest {
     }
 
     @Test
-    void getAccountsForUserById() {
+    void shouldGetAccountsForUserById() {
         List<Account> userAccs = accountRepository.findAccountsByUserId(1);
         AccountList userAccsList = new AccountList(userAccs);
 
