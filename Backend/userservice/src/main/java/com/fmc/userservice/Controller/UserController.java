@@ -1,7 +1,7 @@
 package com.fmc.userservice.Controller;
 
-import com.fmc.userservice.Model.User;
-import com.fmc.userservice.Model.UserList;
+import com.fmc.userservice.Model.User.User;
+import com.fmc.userservice.Model.User.UserList;
 import com.fmc.userservice.Service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
