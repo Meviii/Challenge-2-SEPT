@@ -1,8 +1,8 @@
 package com.fmc.userservice.Controller;
 
 import com.fmc.userservice.Model.Address;
-import com.fmc.userservice.Model.User;
-import com.fmc.userservice.Model.UserList;
+import com.fmc.userservice.Model.User.User;
+import com.fmc.userservice.Model.User.UserList;
 import com.fmc.userservice.Repository.UserRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

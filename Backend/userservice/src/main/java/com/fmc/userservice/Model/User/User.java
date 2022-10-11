@@ -1,9 +1,14 @@
-package com.fmc.userservice.Model;
+package com.fmc.userservice.Model.User;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fmc.userservice.Model.Account.Account;
+import com.fmc.userservice.Model.Address;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -23,6 +28,14 @@ public class User {
     private String birth_date;
     private String job;
     private String phone_no;
+
+    @OneToMany(
+            mappedBy = "user",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    @JsonManagedReference
+    private List<Account> accounts = new ArrayList<>();
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name="address_id", referencedColumnName = "id")
